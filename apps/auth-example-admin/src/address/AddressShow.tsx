@@ -18,7 +18,6 @@ export const AddressShow = (props: ShowProps): React.ReactElement => {
     <Show {...props}>
       <SimpleShowLayout>
         <TextField label="Address 1" source="address_1" />
-        <TextField label="Address 2" source="address_2" />
         <TextField label="City" source="city" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />

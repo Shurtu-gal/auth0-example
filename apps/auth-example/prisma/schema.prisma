@@ -35,7 +35,6 @@ model Customer {
 
 model Address {
   address_1 String?
-  address_2 String?
   city      String?
   createdAt DateTime   @default(now())
   customers Customer[]

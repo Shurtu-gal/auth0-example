@@ -19,7 +19,6 @@ const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
   address_1: "exampleAddress_1",
-  address_2: "exampleAddress_2",
   city: "exampleCity",
   createdAt: new Date(),
   id: "exampleId",
@@ -29,7 +28,6 @@ const CREATE_INPUT = {
 };
 const CREATE_RESULT = {
   address_1: "exampleAddress_1",
-  address_2: "exampleAddress_2",
   city: "exampleCity",
   createdAt: new Date(),
   id: "exampleId",
@@ -40,7 +38,6 @@ const CREATE_RESULT = {
 const FIND_MANY_RESULT = [
   {
     address_1: "exampleAddress_1",
-    address_2: "exampleAddress_2",
     city: "exampleCity",
     createdAt: new Date(),
     id: "exampleId",
@@ -51,7 +48,6 @@ const FIND_MANY_RESULT = [
 ];
 const FIND_ONE_RESULT = {
   address_1: "exampleAddress_1",
-  address_2: "exampleAddress_2",
   city: "exampleCity",
   createdAt: new Date(),
   id: "exampleId",

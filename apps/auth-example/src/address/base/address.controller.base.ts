@@ -55,7 +55,6 @@ export class AddressControllerBase {
       data: data,
       select: {
         address_1: true,
-        address_2: true,
         city: true,
         createdAt: true,
         id: true,
@@ -84,7 +83,6 @@ export class AddressControllerBase {
       ...args,
       select: {
         address_1: true,
-        address_2: true,
         city: true,
         createdAt: true,
         id: true,
@@ -114,7 +112,6 @@ export class AddressControllerBase {
       where: params,
       select: {
         address_1: true,
-        address_2: true,
         city: true,
         createdAt: true,
         id: true,
@@ -153,7 +150,6 @@ export class AddressControllerBase {
         data: data,
         select: {
           address_1: true,
-          address_2: true,
           city: true,
           createdAt: true,
           id: true,
@@ -191,7 +187,6 @@ export class AddressControllerBase {
         where: params,
         select: {
           address_1: true,
-          address_2: true,
           city: true,
           createdAt: true,
           id: true,
