@@ -25,10 +25,10 @@ async function seed(bcryptSalt: Salt) {
   const client = new PrismaClient();
 
   const data = {
-    email: "ashishpadhy1729@gmail.com",
-    name: "Ashish Padhy",
-    roles: ["admin"],
-    username: "Ashish Padhy",
+    email: "example@example.com",
+    name: "",
+    roles: ["user"],
+    username: "admin",
   };
 
   await client.user.upsert({
@@ -41,10 +41,10 @@ async function seed(bcryptSalt: Salt) {
   });
 
   const data = {
-    email: "ashishpadhy1729@gmail.com",
-    name: "Ashish Padhy",
-    roles: ["admin"],
-    username: "Ashish Padhy",
+    email: "example@example.com",
+    name: "",
+    roles: ["user"],
+    username: "admin",
   };
   await client.user.upsert({
     where: {

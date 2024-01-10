@@ -19,13 +19,13 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as common from "@nestjs/common";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { CreateProductArgs } from "./CreateProductArgs";
-import { UpdateProductArgs } from "./UpdateProductArgs";
-import { DeleteProductArgs } from "./DeleteProductArgs";
+import { Product } from "./Product";
 import { ProductCountArgs } from "./ProductCountArgs";
 import { ProductFindManyArgs } from "./ProductFindManyArgs";
 import { ProductFindUniqueArgs } from "./ProductFindUniqueArgs";
-import { Product } from "./Product";
+import { CreateProductArgs } from "./CreateProductArgs";
+import { UpdateProductArgs } from "./UpdateProductArgs";
+import { DeleteProductArgs } from "./DeleteProductArgs";
 import { OrderFindManyArgs } from "../../order/base/OrderFindManyArgs";
 import { Order } from "../../order/base/Order";
 import { ProductService } from "../product.service";
@@ -62,7 +62,7 @@ export class ProductResolverBase {
   async products(
     @graphql.Args() args: ProductFindManyArgs
   ): Promise<Product[]> {
-    return this.service.findMany(args);
+    return this.service.products(args);
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
@@ -75,7 +75,7 @@ export class ProductResolverBase {
   async product(
     @graphql.Args() args: ProductFindUniqueArgs
   ): Promise<Product | null> {
-    const result = await this.service.findOne(args);
+    const result = await this.service.product(args);
     if (result === null) {
       return null;
     }
@@ -92,7 +92,7 @@ export class ProductResolverBase {
   async createProduct(
     @graphql.Args() args: CreateProductArgs
   ): Promise<Product> {
-    return await this.service.create({
+    return await this.service.createProduct({
       ...args,
       data: args.data,
     });
@@ -109,7 +109,7 @@ export class ProductResolverBase {
     @graphql.Args() args: UpdateProductArgs
   ): Promise<Product | null> {
     try {
-      return await this.service.update({
+      return await this.service.updateProduct({
         ...args,
         data: args.data,
       });
@@ -133,7 +133,7 @@ export class ProductResolverBase {
     @graphql.Args() args: DeleteProductArgs
   ): Promise<Product | null> {
     try {
-      return await this.service.delete(args);
+      return await this.service.deleteProduct(args);
     } catch (error) {
       if (isRecordNotFoundError(error)) {
         throw new GraphQLError(
@@ -151,7 +151,7 @@ export class ProductResolverBase {
     action: "read",
     possession: "any",
   })
-  async resolveFieldOrders(
+  async findOrders(
     @graphql.Parent() parent: Product,
     @graphql.Args() args: OrderFindManyArgs
   ): Promise<Order[]> {

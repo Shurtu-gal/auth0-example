@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Admin, DataProvider, Resource } from "react-admin";
+import { Admin, DataProvider } from "react-admin";
 import buildGraphQLProvider from "./data-provider/graphqlDataProvider";
 import { theme } from "./theme/theme";
 import Login from "./Login";
@@ -35,10 +35,10 @@ const App = (): React.ReactElement => {
   const [dataProvider, setDataProvider] = useState<DataProvider | null>(null);
   useEffect(() => {
     buildGraphQLProvider
-      .then((provider: any) => {
+      .then((provider: DataProvider) => {
         setDataProvider(() => provider);
       })
-      .catch((error: any) => {
+      .catch((error: unknown) => {
         console.log(error);
       });
   }, []);
